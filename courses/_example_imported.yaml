@@ -1,0 +1,9 @@
+name: Example (imported)
+description: コースの説明
+lessons:
+  - id: a_plus_b
+    name: A + B
+    description: レッスンの説明
+    topicIds:
+      - _example_imported_a_plus_b_general
+      - _example_imported_a_plus_b_questions
