@@ -4,6 +4,6 @@ lessons:
   - id: a_plus_b
     name: A + B
     description: レッスンの説明
-    topicIds:
-      - __example_imported_a_plus_b_general
-      - __example_imported_a_plus_b_questions
+    topics:
+      - id: __example_imported_a_plus_b_general
+      - id: __example_imported_a_plus_b_questions
