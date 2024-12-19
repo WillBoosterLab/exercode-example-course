@@ -5,5 +5,5 @@ lessons:
     name: A + B
     description: レッスンの説明
     topicIds:
-      - _example_imported_a_plus_b_general
-      - _example_imported_a_plus_b_questions
+      - __example_imported_a_plus_b_general
+      - __example_imported_a_plus_b_questions

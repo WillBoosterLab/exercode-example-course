@@ -6,7 +6,7 @@ name: A + B (general)
 
 トピック **A + B (general)** の本文です。
 
-- [問題](problems/_example_imported_a_plus_b)
+- [問題](problems/__example_imported_a_plus_b)
 
 ## 見出し
 
