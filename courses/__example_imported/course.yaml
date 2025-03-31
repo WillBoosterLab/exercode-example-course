@@ -1,9 +1,6 @@
 name: Example (imported)
 description: コースの説明
-lessons:
+lectures:
   - id: a_plus_b
     name: A + B
     description: レッスンの説明
-    topics:
-      - id: __example_imported_a_plus_b_general
-      - id: __example_imported_a_plus_b_questions

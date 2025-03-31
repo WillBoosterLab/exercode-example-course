@@ -3,21 +3,37 @@ name: A + B (questions)
 questions:
   - id: 2719cf96
     type: select
-    options: ['+', '++', '-', '--']
+    options:
+      - +
+      - ++
+      - "-"
+      - --
     answerIndex: 0
   - id: 9bff0bf7
     type: select_multiple
-    options: ['**', '*', '/', '%', '<']
-    answerIndices: [0, 1, 2, 3]
+    options:
+      - "**"
+      - "*"
+      - /
+      - "%"
+      - <
+    answerIndices:
+      - 0
+      - 1
+      - 2
+      - 3
   - id: b3fb9f7c
     type: text
-    # HTMLのpattern属性同様、先頭に`^(?:`が、末尾に`)$`が含まれているかのように扱われる。
-    answerPattern: 'a\s*\+\s*b'
-    modelAnswer: 'a + b'
+    answerPattern: a\s*\+\s*b
+    modelAnswer: a + b
   - id: e5c0201f
     type: select
-    options: ['はい', 'いいえ']
-    answerIndex: [0, 1]
+    options:
+      - はい
+      - いいえ
+    answerIndex:
+      - 0
+      - 1
 ---
 
 Pythonなどのプログラミング言語において加算を表す演算子を、次の選択肢から1つ選びなさい。
