@@ -1,59 +1,66 @@
 ---
 name: A + B (questions)
-questions:
-  - id: 2719cf96
-    type: select
-    options:
-      - +
-      - ++
-      - "-"
-      - --
-    answerIndex: 0
-  - id: 9bff0bf7
-    type: select_multiple
-    options:
-      - "**"
-      - "*"
-      - /
-      - "%"
-      - <
-    answerIndices:
-      - 0
-      - 1
-      - 2
-      - 3
-  - id: b3fb9f7c
-    type: text
-    answerPattern: a\s*\+\s*b
-    modelAnswer: a + b
-  - id: e5c0201f
-    type: select
-    options:
-      - はい
-      - いいえ
-    answerIndex:
-      - 0
-      - 1
 ---
 
-Pythonなどのプログラミング言語において加算を表す演算子を、次の選択肢から1つ選びなさい。
+選択肢問題や穴埋め問題を作成するには、`yaml` のコードブロックを作ります。
+その際、`yaml`に空白を入れて`question`と書いて、`yaml question`とします。
+なお、各問題には各マテリアル（資料）ファイル内でユニークなIDが必要です。
 
-@[question](2719cf96)
-
-Pythonにおいて加算演算子よりも優先順位が高い（先に演算される）演算子を、次の選択肢からすべて選びなさい。
-
-@[question](9bff0bf7)
-
-次のソースコードの`sum`は引数`a`と`b`の和を返す関数である。
-①にあてはまる式を答えなさい。
-
-```py
-def sum(a, b):
-    return ①
+```yaml question
+id: q1
+type: select
+question: |
+  Pythonなどのプログラミング言語において加算を表す演算子を、次の選択肢から1つ選びなさい。
+options:
+  - +
+  - ++
+  - "-"
+  - --
+answerIndex: 0
 ```
 
-@[question](b3fb9f7c)
+```yaml question
+id: q2
+type: select_multiple
+question: |
+  Pythonにおいて加算演算子よりも優先順位が高い（先に演算される）演算子を、次の選択肢からすべて選びなさい。
+options:
+  - "**"
+  - "*"
+  - /
+  - "%"
+  - <
+answerIndices:
+  - 0
+  - 1
+  - 2
+  - 3
+```
 
-次の選択肢から1つ選びなさい。どちらを選択しても正解になります。
+````yaml question
+id: q3
+type: text
+question: |
+  次のソースコードの`sum`は引数`a`と`b`の和を返す関数である。
+  ①にあてはまる式を答えなさい。
 
-@[question](e5c0201f)
+  ```py
+  def sum(a, b):
+      return ①
+  ```
+answerPattern: a\s*\+\s*b
+modelAnswer: a + b
+````
+
+```yaml question
+id: q4
+type: select
+question: |
+  次の選択肢から1つ選びなさい。どちらを選択しても正解になります。
+options:
+  - はい
+  - いいえ
+answerIndex:
+  - 0
+  - 1
+```
