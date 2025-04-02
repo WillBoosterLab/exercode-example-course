@@ -64,3 +64,9 @@ answerIndex:
   - 0
   - 1
 ```
+
+注意点：
+- `select` 型の問題では、`answerIndex` は単一の数値または数値の配列で指定します。
+- `select_multiple` 型の問題では、`answerIndices` は数値の配列で指定します。
+- `text` 型の問題では、`answerPattern` は必須で、正解の正規表現パターンを指定します。
+- `text` 型の問題では、`modelAnswer` はオプションで、模範解答を提供します。
