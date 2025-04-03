@@ -97,8 +97,8 @@ name: マテリアル1
 | `fixHintWaitingSeconds`      | 整数   | 問題を開いてから修正ヒントが利用可能になるまでの待機時間（秒）     |
 | `diffHintWaitingSeconds`     | 整数   | 問題を開いてから差分ヒントが利用可能になるまでの待機時間（秒）     |
 | `submissionOpenedAt`         | 文字列 | 提出開始日時（ISO 日付文字列）                                     |
-| `submissionSoftClosedAt`     | 文字列 | 提出ソフト締切日時（ISO 日付文字列）                               |
-| `submissionHardClosedAt`     | 文字列 | 提出ハード締切日時（ISO 日付文字列）                               |
+| `submissionSoftClosedAt`     | 文字列 | 提出ソフト締切日時（ISO 日付文字列）。この日時を過ぎても提出は可能ですが、遅延提出として扱われます。 |
+| `submissionHardClosedAt`     | 文字列 | 提出ハード締切日時（ISO 日付文字列）。この日時を過ぎると提出ができなくなります。 |
 | `isMotivationFeatureEnabled` | 真偽   | モチベーション機能を**有効**にする                                 |
 
 ### 問題
