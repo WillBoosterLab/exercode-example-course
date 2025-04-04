@@ -98,6 +98,7 @@ name: マテリアル1
 | `submissionOpenedAt`         | 文字列 | 提出開始日時（ISO 日付文字列）                                                                                                       |
 | `submissionSoftClosedAt`     | 文字列 | 提出ソフト締切日時（ISO 日付文字列、例: `2025-04-03T08:27:50.527Z`）。この日時を過ぎても提出は可能ですが、遅延提出として扱われます。 |
 | `submissionHardClosedAt`     | 文字列 | 提出ハード締切日時（ISO 日付文字列、例: `2025-04-03T08:27:50.527Z`）。この日時を過ぎると提出ができなくなります。                     |
+| `isAutoTranslationDisabled`  | 真偽   | 自動翻訳を**無効**にする                                                                                                             |
 | `isMotivationFeatureEnabled` | 真偽   | モチベーション機能を**有効**にする                                                                                                   |
 
 ### 問題
