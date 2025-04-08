@@ -95,7 +95,7 @@ name: マテリアル1
 | `debugHintWaitingSeconds`    | 整数   | 問題を開いてからデバッグヒントが利用可能になるまでの待機時間（秒）                                                                   |
 | `fixHintWaitingSeconds`      | 整数   | 問題を開いてから修正ヒントが利用可能になるまでの待機時間（秒）                                                                       |
 | `diffHintWaitingSeconds`     | 整数   | 問題を開いてから差分ヒントが利用可能になるまでの待機時間（秒）                                                                       |
-| `submissionOpenedAt`         | 文字列 | 提出開始日時（ISO 日付文字列）                                                                                                       |
+| `submissionOpenedAt`         | 文字列 | 提出開始日時（ISO 日付文字列、例: `2025-04-03T08:27:50.527Z`）                                                                         |
 | `submissionSoftClosedAt`     | 文字列 | 提出ソフト締切日時（ISO 日付文字列、例: `2025-04-03T08:27:50.527Z`）。この日時を過ぎても提出は可能ですが、遅延提出として扱われます。 |
 | `submissionHardClosedAt`     | 文字列 | 提出ハード締切日時（ISO 日付文字列、例: `2025-04-03T08:27:50.527Z`）。この日時を過ぎると提出ができなくなります。                     |
 | `isAutoTranslationDisabled`  | 真偽   | 自動翻訳を**無効**にする                                                                                                             |
