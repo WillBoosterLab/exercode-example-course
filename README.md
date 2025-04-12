@@ -84,27 +84,27 @@ name: マテリアル1
 これらのパラメータをコースとマテリアルの両方に設定すると、マテリアルの設定が優先されます。
 真偽値のパラメータの初期値はすべて`false`です。
 
-| パラメータ名                 | 型     | 説明                                                                                                                                 |
-| ---------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `availableLanguageIds`       | 配列   | 利用可能なプログラミング言語                                                                                                         |
-| `areTestCasesHidden`         | 真偽   | テストケースを**非表示**にする                                                                                                       |
-| `isGradingResultHidden`      | 真偽   | 採点結果を**非表示**にする                                                                                                           |
-| `isCodeiumEnabled`           | 真偽   | Codeium を**有効**にする                                                                                                             |
-| `isAutoFormatDisabled`       | 真偽   | 自動フォーマットを**無効**にする                                                                                                     |
-| `isCopyAndPasteDisabled`     | 真偽   | コードエディタでのコピー＆ペーストを**無効**にする                                                                                   |
-| `isDebugHintDisabled`        | 真偽   | デバッグヒントを**無効**にする                                                                                                       |
-| `isFixHintDisabled`          | 真偽   | 修正ヒントを**無効**にする                                                                                                           |
-| `isDiffHintDisabled`         | 真偽   | 差分ヒントを**無効**にする                                                                                                           |
-| `debugHintWaitingSeconds`    | 整数   | 問題を開いてからデバッグヒントが利用可能になるまでの待機時間（秒）                                                                   |
-| `fixHintWaitingSeconds`      | 整数   | 問題を開いてから修正ヒントが利用可能になるまでの待機時間（秒）                                                                       |
-| `diffHintWaitingSeconds`     | 整数   | 問題を開いてから差分ヒントが利用可能になるまでの待機時間（秒）                                                                       |
-| `submissionOpenedAt`         | 文字列 | 提出開始日時（ISO 日付文字列、例: `2025-04-28T13:10+09:00`）                                                                         |
-| `submissionSoftClosedAt`     | 文字列 | 提出ソフト締切日時（ISO 日付文字列、例: `2025-04-28T13:10+09:00`）。この日時を過ぎても提出は可能ですが、遅延提出として扱われます。 |
-| `submissionHardClosedAt`     | 文字列 | 提出ハード締切日時（ISO 日付文字列、例: `2025-04-28T13:10+09:00`）。この日時を過ぎると提出ができなくなります。                     |
-| `isAutoTranslationDisabled`  | 真偽   | 自動翻訳を**無効**にする                                                                                                             |
-| `isMotivationFeatureEnabled` | 真偽   | モチベーション機能を**有効**にする                                                                                                   |
+| パラメータ名                 | 型     | 説明                                                                               |
+| ---------------------------- | ------ |----------------------------------------------------------------------------------|
+| `availableLanguageIds`       | 配列   | 利用可能なプログラミング言語                                                                   |
+| `areTestCasesHidden`         | 真偽   | テストケースを**非表示**にする                                                                |
+| `isGradingResultHidden`      | 真偽   | 採点結果を**非表示**にする                                                                  |
+| `isCodeiumEnabled`           | 真偽   | Codeium を**有効**にする                                                               |
+| `isAutoFormatDisabled`       | 真偽   | 自動フォーマットを**無効**にする                                                               |
+| `isCopyAndPasteDisabled`     | 真偽   | コードエディタでのコピー＆ペーストを**無効**にする                                                      |
+| `isDebugHintDisabled`        | 真偽   | デバッグヒントを**無効**にする                                                                |
+| `isFixHintDisabled`          | 真偽   | 修正ヒントを**無効**にする                                                                  |
+| `isDiffHintDisabled`         | 真偽   | 差分ヒントを**無効**にする                                                                  |
+| `debugHintWaitingSeconds`    | 整数   | 問題を開いてからデバッグヒントが利用可能になるまでの待機時間（秒）                                                |
+| `fixHintWaitingSeconds`      | 整数   | 問題を開いてから修正ヒントが利用可能になるまでの待機時間（秒）                                                  |
+| `diffHintWaitingSeconds`     | 整数   | 問題を開いてから差分ヒントが利用可能になるまでの待機時間（秒）                                                  |
+| `submissionOpenedAt`         | 文字列 | 提出開始日時（ISO 日付文字列、例: `2025-04-28T13:10:00+09:00`）                                 |
+| `submissionSoftClosedAt`     | 文字列 | 提出ソフト締切日時（ISO 日付文字列、例: `2025-04-28T13:10:00+09:00`）。この日時を過ぎても提出は可能ですが、遅延提出として扱われます。 |
+| `submissionHardClosedAt`     | 文字列 | 提出ハード締切日時（ISO 日付文字列、例: `2025-04-28T13:10:00+09:00`）。この日時を過ぎると提出ができなくなります。           |
+| `isAutoTranslationDisabled`  | 真偽   | 自動翻訳を**無効**にする                                                                   |
+| `isMotivationFeatureEnabled` | 真偽   | モチベーション機能を**有効**にする                                                              |
 
-[ISO日付文字列](https://ja.wikipedia.org/wiki/ISO_8601)を記載する際は、 `2025-04-28T13:10+09:00` のようにタイムゾーン情報（`+09:00`）を末尾に追記することを強く推奨します。
+[ISO日付文字列](https://ja.wikipedia.org/wiki/ISO_8601)を記載する際は、 `2025-04-28T13:10:00+09:00` のようにタイムゾーン情報（`+09:00`）を末尾に追記することを強く推奨します。
 
 ### 問題
 
