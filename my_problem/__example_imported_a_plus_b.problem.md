@@ -1,6 +1,6 @@
 ---
 name: A + B
-timeLimitMs: 2_000
+timeLimitMs: 2000
 ---
 
 ## 問題文
