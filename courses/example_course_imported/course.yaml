@@ -1,6 +1,6 @@
-name: Example (imported)
-description: コースの説明
+name: GitHubリポジトリからインポートしたコース例
+description: Exercode用の教材作成社向けの例となるコースです。 https://github.com/WillBoosterLab/exercode-example-course/ からインポートされています。
 lectures:
   - id: a_plus_b
     name: A + B
-    description: レッスンの説明
+    description: ここに各回の説明を記載します。
