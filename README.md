@@ -19,7 +19,7 @@ description: コースの説明
 isDiffHintDisabled: true
 lectures:
   # 各レクチャー (Lecture) のパラメータ
-  - id: '01'
+  - id: 'addition'
     name: レッスン名
     description: レッスンの説明
 ```
