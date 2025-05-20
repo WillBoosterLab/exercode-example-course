@@ -1,6 +1,9 @@
 ---
 name: A + B
 timeLimitMs: 2000
+debugHintWaitingSeconds: 0
+fixHintWaitingSeconds: 0
+diffHintWaitingSeconds: 0
 ---
 
 ## 問題文
