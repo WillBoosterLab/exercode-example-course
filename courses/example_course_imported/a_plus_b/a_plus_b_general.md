@@ -1,5 +1,8 @@
 ---
 name: A + B (general)
+debugHintWaitingSeconds: 0
+fixHintWaitingSeconds: 0
+diffHintWaitingSeconds: 0
 ---
 
 ## 見出し
