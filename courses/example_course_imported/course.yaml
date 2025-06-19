@@ -2,5 +2,8 @@ name: GitHubリポジトリからインポートしたコース例
 description: Exercode用の教材作成社向けの例となるコースです。 https://github.com/WillBoosterLab/exercode-example-course/ からインポートされています。
 lectures:
   - id: a_plus_b
-    name: A + B
+    name: 足し算を学ぼう
+    description: ここに各回の説明を記載します。
+  - id: a_minus_b
+    name: 引き算を学ぼう
     description: ここに各回の説明を記載します。
