@@ -54,3 +54,5 @@ $A+B$を出力せよ。
 ```
 5
 ```
+
+![](/assets/problems/a_plus_b/01_mac.png)

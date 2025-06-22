@@ -11,3 +11,5 @@ diffHintWaitingSeconds: 0
 
 - [CUI問題](problems/example_course_imported_a_plus_b)
 - [GUI問題](problems/example_course_imported_java_gui)
+
+![Microsoft CopilotのTopページ](/assets/topics/a_minus_b/introduction_MicrosoftCopilot3.png)
