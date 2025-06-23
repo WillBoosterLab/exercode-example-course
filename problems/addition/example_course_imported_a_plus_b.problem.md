@@ -55,4 +55,4 @@ $A+B$を出力せよ。
 5
 ```
 
-![](/assets/problems/a_plus_b/01_mac.png)
+![](/assets/problems/example_course_imported_a_plus_b/01_mac.png)
