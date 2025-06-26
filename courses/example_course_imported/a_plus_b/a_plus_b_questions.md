@@ -14,7 +14,7 @@ question: |
 options:
   - +
   - ++
-  - "-"
+  - '-'
   - --
 answerIndex: 0
 ```
@@ -25,10 +25,10 @@ type: select_multiple
 question: |
   Pythonにおいて加算演算子よりも優先順位が高い（先に演算される）演算子を、次の選択肢からすべて選びなさい。
 options:
-  - "**"
-  - "*"
+  - '**'
+  - '*'
   - /
-  - "%"
+  - '%'
   - <
 answerIndices:
   - 0
@@ -66,6 +66,7 @@ answerIndex:
 ```
 
 注意点：
+
 - `select` 型の問題では、`answerIndex` は単一の数値または数値の配列で指定します。
 - `select_multiple` 型の問題では、`answerIndices` は数値の配列で指定します。
 - `text` 型の問題では、`answerPattern` は必須で、正解の正規表現パターンを指定します。
