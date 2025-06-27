@@ -143,3 +143,9 @@ $A+B$の計算結果を出力してください。
 | `forbiddenTextsInCode`   | 文字列の配列 |      | `[]`              | ソースコードで禁止の文字列     |
 
 正規表現を表すパラメータの文字列は、JavaScript の`new RegExp(pattern)`コンストラクタの`pattern`として入力されます。
+
+### 選択肢・穴埋め問題
+
+マテリアルファイルの中で選択肢・穴埋め問題を作成することができます。
+詳細は [マテリアルファイルの例](courses/example_course_imported/a_plus_b/a_plus_b_questions.md) をご覧ください。
+
