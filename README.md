@@ -102,6 +102,7 @@ name: マテリアル1
 | `submissionSoftClosedAt`       | 文字列 | 提出ソフト締切日時（ISO 日付文字列、例: `2025-04-28T13:10:00+09:00`）。この日時を過ぎても提出は可能ですが、遅延提出として扱われます。 |
 | `submissionHardClosedAt`       | 文字列 | 提出ハード締切日時（ISO 日付文字列、例: `2025-04-28T13:10:00+09:00`）。この日時を過ぎると提出ができなくなります。                     |
 | `isAutoTranslationDisabled`    | 真偽   | 自動翻訳を**無効**にする                                                                                                              |
+| `isCodeBlockExecutionDisabled` | 真偽   | コードブロック中のコード実行を**無効**にする                                                                                          |
 | `isMotivationFeatureEnabled`   | 真偽   | モチベーション機能を**有効**にする                                                                                                    |
 
 [ISO 日付文字列](https://ja.wikipedia.org/wiki/ISO_8601)を記載する際は、 `2025-04-28T13:10:00+09:00` のようにタイムゾーン情報（`+09:00`）を末尾に追記することを強く推奨します。
