@@ -3,11 +3,10 @@ name: '小テスト'
 isExamination: true
 isProblemGradingResultHidden: false
 submissionOpenedAt: '2025-07-01T13:00:00+09:00'
-submissionSoftClosedAt: '2026-06-30T13:00:00+09:00'
+submissionSoftClosedAt: '3000-06-30T13:00:00+09:00'
 ---
 
-この教材は、2025年07月01日13時から閲覧できるようになり、2026年06月30日13時に閲覧できなくなります。
-
+この教材は、2025年07月01日13時から閲覧できるようになり、3000年06月30日13時に閲覧できなくなります。
 
 ### 選択肢問題
 
@@ -46,7 +45,7 @@ explanation: >-
 
 ### コーディング問題
 
-`a_plus_b_general.md` と同じコーディング問題を参照してみる。
+`a_plus_b/a_plus_b_general.md` と同じコーディング問題を参照してみる。
 
 - [CUI問題](problems/example_course_imported_a_plus_b)
 - [GUI問題](problems/example_course_imported_java_gui)
