@@ -40,7 +40,7 @@ options:
   - 'undefined'
 answerIndex: 1
 explanation: >-
-    JavaScriptでは、配列のインデックスは0から始まるため、`list[1]`は2番目の要素である20を指します。
+  JavaScriptでは、配列のインデックスは0から始まるため、`list[1]`は2番目の要素である20を指します。
 ````
 
 ### コーディング問題
