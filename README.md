@@ -94,9 +94,9 @@ name: マテリアル1
 | `isCodeiumEnabled`             | 真偽   | Codeium を**有効**にする                                                                                                              |
 | `isAutoFormatDisabled`         | 真偽   | 自動フォーマットを**無効**にする                                                                                                      |
 | `isCopyAndPasteDisabled`       | 真偽   | コードエディタでのコピー＆ペーストを**無効**にする                                                                                    |
-| `isDebugHintDisabled`          | 真偽   | デバッグヒントを**無効**にする                                                                                                        |
-| `isFixHintDisabled`            | 真偽   | 修正ヒントを**無効**にする                                                                                                            |
-| `isDiffHintDisabled`           | 真偽   | 差分ヒントを**無効**にする                                                                                                            |
+| `isDebugHintDisabled`          | 真偽   | デバッグヒント（不正解の理由の説明）の表示を**無効**にする                                                                            |
+| `isFixHintDisabled`            | 真偽   | 修正ヒント（修正方法の説明）の表示を**無効**にする                                                                                    |
+| `isDiffHintDisabled`           | 真偽   | 差分ヒント（修正済みの正解コード）の表示を**無効**にする                                                                              |
 | `debugHintWaitingSeconds`      | 整数   | 問題を開いてからデバッグヒント（不正解の理由の説明）が利用可能になるまでの待機時間（秒）                                              |
 | `fixHintWaitingSeconds`        | 整数   | 問題を開いてから修正ヒント（修正方法の説明）が利用可能になるまでの待機時間（秒）                                                      |
 | `diffHintWaitingSeconds`       | 整数   | 問題を開いてから差分ヒント（修正済みの正解コード）が利用可能になるまでの待機時間（秒）                                                |
