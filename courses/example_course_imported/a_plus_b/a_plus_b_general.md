@@ -1,5 +1,5 @@
 ---
-name: A + B (コーディング問題のみ)
+name: A + B（コーディング問題のみ）
 debugHintWaitingSeconds: 0
 fixHintWaitingSeconds: 0
 diffHintWaitingSeconds: 0
@@ -7,7 +7,7 @@ diffHintWaitingSeconds: 0
 
 ## 見出し1
 
-トピック **A + B (general)** の本文です。
+トピック **A + B（コーディング問題のみ）** の本文です。
 
 - [CUI問題](problems/example_course_imported_a_plus_b)
 - [GUI問題](problems/example_course_imported_java_gui)

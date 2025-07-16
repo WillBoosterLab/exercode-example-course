@@ -1,5 +1,5 @@
 ---
-name: A - B (general)
+name: A - B（コーディング問題のみ）
 debugHintWaitingSeconds: 0
 fixHintWaitingSeconds: 0
 diffHintWaitingSeconds: 0

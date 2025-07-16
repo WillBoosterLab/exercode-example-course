@@ -1,5 +1,5 @@
 ---
-name: A + B (general)の復習
+name: A - B（コーディング問題のみ）の復習
 debugHintWaitingSeconds: 0
 fixHintWaitingSeconds: 0
 diffHintWaitingSeconds: 0
