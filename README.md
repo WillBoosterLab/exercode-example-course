@@ -110,6 +110,7 @@ name: マテリアル1
 | `submissionHardClosedAt`          | 文字列 | 提出ハード締切日時（ISO 日付文字列、例: `2025-04-28T13:10:00+09:00`）。この日時を過ぎると提出ができなくなります。                     |
 | `isAutoTranslationDisabled`       | 真偽   | 自動翻訳を**無効**にする                                                                                                              |
 | `isModelAnswerShownAfterDeadline` | 真偽   | 締切後にコーディング問題の模範解答を表示する。                                                                                        |
+| `isVotable`                       | 真偽   | 投票機能（提出後に他の学生のソースコードを閲覧する機能）が有効か否か                                                                  |
 
 [ISO 日付文字列](https://ja.wikipedia.org/wiki/ISO_8601)を記載する際は、 `2025-04-28T13:10:00+09:00` のようにタイムゾーン情報（`+09:00`）を末尾に追記することを強く推奨します。
 
@@ -151,7 +152,7 @@ $A+B$の計算結果を出力してください。
 | `isAttachedFileRequired`                 | 真偽               |      |                   | 添付ファイルが必須か否か                                                                   |
 | `isGui`                                  | 真偽               |      |                   | GUI プログラム専用の自動採点をするか否か。自動判定されるが、このオプションで指定もできる。 |
 | `isManualScoringRequired`                | 真偽               |      |                   | 手動採点が必要か否か。手動採点が必要な問題ではヒント機能は利用できない。                   |
-| `isVotable`                              | 真偽               |      |                   | 投票可能か否か                                                                             |
+| `isVotable`                              | 真偽               |      |                   | 投票機能（提出後に他の学生のソースコードを閲覧する機能）が有効か否か                       |
 | `requiredEnvironmentVariables`           | 文字列の配列       |      | `[]`              | 必須の環境変数                                                                             |
 | `requiredOutputFilePaths`                | 文字列の配列       |      | `[]`              | ユーザプログラムが出力しなければならないファイルのパス                                     |
 | `requiredSubmissionFilePaths`            | 文字列の配列       |      | `[]`              | 提出が必須のファイル                                                                       |
