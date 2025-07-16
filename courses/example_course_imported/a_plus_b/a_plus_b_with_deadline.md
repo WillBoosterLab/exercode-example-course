@@ -1,5 +1,5 @@
 ---
-name: '締め切り付きの教材'
+name: 締め切り付きの教材
 isProblemGradingResultHidden: false
 submissionOpenedAt: '2025-04-14T13:00:00+09:00'
 submissionSoftClosedAt: '2025-04-28T13:10:00+09:00'
@@ -13,3 +13,4 @@ submissionSoftClosedAt: '2025-04-28T13:10:00+09:00'
 
 - [CUI問題](problems/example_course_imported_a_plus_b)
 - [GUI問題](problems/example_course_imported_java_gui)
+- [レポート課題](problems/example_course_imported_report)
