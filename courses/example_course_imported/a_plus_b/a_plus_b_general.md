@@ -5,7 +5,7 @@ fixHintWaitingSeconds: 0
 diffHintWaitingSeconds: 0
 ---
 
-## 見出し
+## 見出し1
 
 トピック **A + B (general)** の本文です。
 
@@ -13,7 +13,7 @@ diffHintWaitingSeconds: 0
 - [GUI問題](problems/example_course_imported_java_gui)
 - [レポート課題](problems/example_course_imported_report)
 
-## 見出し
+## 見出し2
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
