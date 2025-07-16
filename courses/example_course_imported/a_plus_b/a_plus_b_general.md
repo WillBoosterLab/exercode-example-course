@@ -11,6 +11,7 @@ diffHintWaitingSeconds: 0
 
 - [CUI問題](problems/example_course_imported_a_plus_b)
 - [GUI問題](problems/example_course_imported_java_gui)
+- [レポート課題](problems/example_course_imported_report)
 
 ## 見出し
 
