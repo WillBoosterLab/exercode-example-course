@@ -16,6 +16,7 @@
 # コースのパラメータ
 name: コース名
 description: コースの説明
+author: 作成者名
 isDiffHintDisabled: true
 lectures:
   # 各レクチャー (Lecture) のパラメータ
@@ -30,6 +31,7 @@ lectures:
 | ---------------------------- | ------ | ---------------------------------------------- |
 | `name`                       | 文字列 | 名称                                           |
 | `description`                | 文字列 | 説明                                           |
+| `author`                     | 文字列 | 作成者名                                       |
 | `lessons`                    | 配列   | レッスンの配列                                 |
 | `isMotivationFeatureEnabled` | 真偽   | モチベーション機能を**有効**にする             |
 | 他                           |        | コース・マテリアル共通の設定パラメータ（後述） |
