@@ -98,7 +98,6 @@ name: マテリアル1
 | `availableLanguageIds`            | 配列   | 利用可能なプログラミング言語                                                                                                          |
 | `areTestCasesHidden`              | 真偽   | コーディング問題のテストケースを**非表示**にする                                                                                      |
 | `isProblemGradingResultHidden`    | 真偽   | コーディング問題の採点結果を**非表示**にする                                                                                          |
-| `isCodeiumEnabled`                | 真偽   | Codeium を**有効**にする                                                                                                              |
 | `isAutoFormatDisabled`            | 真偽   | 自動フォーマットを**無効**にする                                                                                                      |
 | `isCopyAndPasteDisabled`          | 真偽   | コードエディタでのコピー＆ペーストを**無効**にする                                                                                    |
 | `isDebugHintDisabled`             | 真偽   | デバッグヒント（不正解の理由の説明）の表示を**無効**にする                                                                            |
