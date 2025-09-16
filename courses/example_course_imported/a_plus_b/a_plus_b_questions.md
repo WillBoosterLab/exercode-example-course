@@ -5,8 +5,9 @@ name: A + B（選択・穴埋め問題のみ）
 選択肢問題や穴埋め問題を作成するには、`yaml` のコードブロックを作ります。
 その際、`yaml`に空白を入れて`question`と書いて、`yaml question`とします。
 なお、各問題には各マテリアル（資料）ファイル内でユニークなIDが必要です。
+詳細は [マテリアル内に挿入可能な問題の作問ガイドライン](/howToWriteQuestions.md) をご覧ください。
 
-```yaml question
+~~~yaml question
 id: q1
 type: select
 question: |
@@ -17,9 +18,9 @@ options:
   - '-'
   - --
 answerIndex: 0
-```
+~~~
 
-```yaml question
+~~~yaml question
 id: q2
 type: select_multiple
 question: |
@@ -35,9 +36,9 @@ answerIndices:
   - 1
   - 2
   - 3
-```
+~~~
 
-````yaml question
+~~~yaml question
 id: q3
 type: text
 question: |
@@ -50,9 +51,9 @@ question: |
   ```
 answerPattern: a\s*\+\s*b
 modelAnswer: a + b
-````
+~~~
 
-```yaml question
+~~~yaml question
 id: q4
 type: select
 question: |
@@ -63,11 +64,4 @@ options:
 answerIndex:
   - 0
   - 1
-```
-
-注意点：
-
-- `select` 型の問題では、`answerIndex` は単一の数値または数値の配列で指定します。
-- `select_multiple` 型の問題では、`answerIndices` は数値の配列で指定します。
-- `text` 型の問題では、`answerPattern` は必須で、正解の正規表現パターンを指定します。
-- `text` 型の問題では、`modelAnswer` はオプションで、模範解答を提供します。
+~~~
