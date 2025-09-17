@@ -13,6 +13,8 @@ diffHintWaitingSeconds: 0
 - [GUI問題](problems/example_course_imported_java_gui)
 - [レポート課題](problems/example_course_imported_report)
 
+上記のリンクはExercodeのテスト（動作確認）で参照しているので、テキストやリンク先を変更しないでください。
+
 ## 見出し2
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
