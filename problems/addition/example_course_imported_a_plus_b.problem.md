@@ -1,5 +1,5 @@
 ---
-name: A + B
+name: A + B（CUI問題）
 timeLimitMs: 2000
 ---
 

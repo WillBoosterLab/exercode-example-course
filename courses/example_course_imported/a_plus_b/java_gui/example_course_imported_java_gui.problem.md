@@ -1,5 +1,5 @@
 ---
-name: 図形の描画（Java Swing）
+name: 図形の描画（GUI問題）
 isGui: true
 isManualScoringRequired: true
 ---
