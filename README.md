@@ -72,7 +72,7 @@ name: マテリアル1
 
 本文です。
 
-- [問題](/problems/__example_imported_a_plus_b)
+- [問題](problems/__example_imported_a_plus_b)
 ```
 
 #### マテリアルのパラメータ
@@ -136,6 +136,42 @@ timeLimitMs: 2000
 $A+B$の計算結果を出力してください。
 
 （後略）
+```
+
+#### テストケースの作成
+
+`isManualScoringRequired` が `true` で設定されていない場合、自動採点用のテストケースを作成する必要があります。
+
+#### テストケースファイルの配置
+
+1. `[問題ID].problem.md` と同じディレクトリに `test_cases` フォルダを作成します。
+
+2. `test_cases` フォルダ内に、1つ以上の標準入力・標準出力ファイルのペアを作成します：
+   - 標準入力ファイル：`[テストケース名].in`
+   - 標準出力ファイル：`[テストケース名].out`
+
+※1 標準入力と標準出力のペアは、`[テストケース名]` が同一かどうかで判断されます。
+
+※2 標準入力がない場合でも、空の `[テストケース名].in` ファイルが必要です。
+
+#### テストケースファイルの配置例
+
+```
+addition/
+├── example_course_imported_a_plus_b.problem.md
+└── test_cases/
+    ├── sample1.in
+    ├── sample1.out
+    ├── sample2.in
+    ├── sample2.out
+    ├── edge1.in
+    ├── edge1.out
+    ├── edge2.in
+    ├── edge2.out
+    ├── random1.in
+    ├── random1.out
+    ├── random2.in
+    └── random2.out
 ```
 
 #### コーディング問題のパラメータ
