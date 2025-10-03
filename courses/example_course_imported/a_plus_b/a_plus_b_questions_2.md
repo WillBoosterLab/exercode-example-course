@@ -84,3 +84,16 @@ options:
   - 'ユーザーにパスワードの入力を求める'
 answerIndex: 1
 ```
+
+```yaml question
+id: web_mechanism_trace_q2
+type: select
+question: |
+  ユーザーがブラウザのアドレスバーに `http://example.com/news` と入力してEnterキーを押しました。ブラウザが最初に行うと考えられる動作はどれですか？
+options:
+  - '`example.com` のWebサーバーに直接HTTPリクエストを送る'
+  - 'DNSサーバーに `example.com` のIPアドレスを問い合わせる'
+  - 'ローカルのキャッシュから `/news` のHTMLファイルを探す'
+  - 'ユーザーにパスワードの入力を求める'
+answerIndex: 1
+```
