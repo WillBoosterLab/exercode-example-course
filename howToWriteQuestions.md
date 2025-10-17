@@ -43,7 +43,7 @@ Exercodeでは、以下のような問題が存在します。本資料では、
 
 いずれの問題形式でも、追加で以下の項目を設定することができます。（設定しなくても構いません。）
 
-- `resubmittable`: 再提出可能か否かを示します。小テストなどの試験問題では、試験が終わるまでは解答内容を変更できるように `true` を設定すべきです。
+- `isResubmittable`: 再提出可能か否かを示します。小テストなどの試験問題では、試験が終わるまでは解答内容を変更できるように `true` を設定すべきです。
 - `explanation`: 解説を記載できます。模範解答を表示するタイミングで、一緒に表示されます。
 - `hint`: ヒントを記載できます。ヒントは、復習機能で復習する時だけ表示されます。
 
@@ -51,7 +51,7 @@ Exercodeでは、以下のような問題が存在します。本資料では、
 
 以下に必須項目のみで構成された4つの基本的な問題例を示します。
 
-~~~yaml question
+```yaml question
 id: 'q1'
 type: 'select'
 question: |
@@ -62,9 +62,9 @@ options:
   - '-'
   - '--'
 answerIndex: 0
-~~~
+```
 
-~~~yaml question
+```yaml question
 id: 'q2'
 type: 'select_multiple'
 question: |
@@ -80,9 +80,9 @@ answerIndices:
   - 1
   - 2
   - 3
-~~~
+```
 
-~~~yaml question
+````yaml question
 id: q3
 type: text
 question: |
@@ -95,9 +95,9 @@ question: |
   ```
 answerPattern: a\s*\+\s*b
 modelAnswer: a + b
-~~~
+````
 
-~~~yaml question
+````yaml question
 id: 'tracing_questions_q1'
 type: 'select'
 question: |
@@ -117,13 +117,13 @@ options:
   - '2'
   - '3'
 answerIndex: 2
-~~~
+````
 
 ### ヒントと解説付きの問題例
 
 以下に必須項目のみで構成された4つの基本的な問題例を示します。
 
-~~~yaml question
+```yaml question
 id: select_purpose_alt
 type: select
 question: |
@@ -134,7 +134,7 @@ options:
   - 取得する行を絞り込む条件を指定する
   - 取得結果の並び順を指定する
 answerIndex: 0
-resubmittable: true
+isResubmittable: true
 explanation: |-
   SQLの`SELECT`文は、データベースから情報を取得するための基本的な命令です。`SELECT`文はいくつかの句（clause）で構成されており、それぞれが特定の役割を持っています。
 
@@ -158,4 +158,4 @@ hint: |-
   解き方:
   - `SELECT`文の基本的な書き方（例: `SELECT 列名 FROM テーブル名 WHERE 条件`）を思い出してください。`SELECT`というキーワードのすぐ後に書かれる情報は何でしょうか？
   - 各選択肢が説明している内容（列の指定、テーブルの指定、行の絞り込み、並び順の指定）が、`SELECT`文のどの句の役割に対応するのかを考え、`SELECT`句の役割として最も適切なものを選びましょう。
-~~~
+```

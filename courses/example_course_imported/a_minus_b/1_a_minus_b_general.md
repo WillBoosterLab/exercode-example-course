@@ -14,9 +14,6 @@ diffHintWaitingSeconds: 0
 
 ## A - B
 
-
 - [A - B](problems/example_course_imported_a_minus_b)
-
-
 
 ![Microsoft CopilotのTopページ](/assets/topics/a_minus_b_general/introduction_MicrosoftCopilot3.png)

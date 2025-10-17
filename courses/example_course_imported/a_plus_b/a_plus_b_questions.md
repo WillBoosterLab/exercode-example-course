@@ -7,7 +7,7 @@ name: A + B（選択・穴埋め問題のみ）
 なお、各問題には各マテリアル（資料）ファイル内でユニークなIDが必要です。
 詳細は [マテリアル内に挿入可能な問題の作問ガイドライン](/howToWriteQuestions.md) をご覧ください。
 
-~~~yaml question
+```yaml question
 id: q1
 type: select
 question: |
@@ -18,9 +18,9 @@ options:
   - '-'
   - --
 answerIndex: 0
-~~~
+```
 
-~~~yaml question
+```yaml question
 id: q2
 type: select_multiple
 question: |
@@ -36,9 +36,9 @@ answerIndices:
   - 1
   - 2
   - 3
-~~~
+```
 
-~~~yaml question
+````yaml question
 id: q3
 type: text
 question: |
@@ -51,9 +51,9 @@ question: |
   ```
 answerPattern: a\s*\+\s*b
 modelAnswer: a + b
-~~~
+````
 
-~~~yaml question
+```yaml question
 id: q4
 type: select
 question: |
@@ -64,4 +64,4 @@ options:
 answerIndex:
   - 0
   - 1
-~~~
+```
