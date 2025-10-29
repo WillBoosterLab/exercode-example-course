@@ -24,7 +24,7 @@ answerIndex: 0,1,2,3,4,5,6
 isResubmittable: true
 ```
 
-```yaml
+```yaml question
 id: q2
 type: select_multiple
 question: |
