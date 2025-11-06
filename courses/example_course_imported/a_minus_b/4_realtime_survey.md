@@ -20,8 +20,8 @@ options:
   - Python
   - Ruby
   - TypeScript
-answerIndex: 0,1,2,3,4,5,6
 isResubmittable: true
+isSurvey: true
 ```
 
 ```yaml question
@@ -36,12 +36,6 @@ options:
   - 転職やキャリアアップのため(例：市場価値の高いスキルを身につけたい、より良い条件の職に就きたい)
   - 個人的な興味・関心のため(例：データ活用に興味があった、趣味や自己学習の一環として)
   - その他
-answerIndices:
-  - 0
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
 isResubmittable: true
+isSurvey: true
 ```
