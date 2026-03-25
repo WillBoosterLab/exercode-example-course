@@ -1,4 +1,4 @@
-NEXT_PUBLIC_BASE_URL---
+---
 name: 'リアルタイム問題'
 isRealtimeSurvey: true
 ---
