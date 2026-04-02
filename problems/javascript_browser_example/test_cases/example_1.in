@@ -1,0 +1,9 @@
+document.body.innerHTML = '<p id="message">初期テキスト</p><button id="change-btn">変更</button>';
+window.test = function() {
+  document.getElementById('change-btn').click();
+  if (document.getElementById('message').textContent === 'こんにちは！') {
+    console.log('OK');
+  } else {
+    console.log('NG');
+  }
+};

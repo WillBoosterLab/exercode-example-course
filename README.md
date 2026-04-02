@@ -197,3 +197,243 @@ addition/
 | `requiredSubmissionFilePaths`            | 文字列の配列       |      | `[]`              | 提出が必須のファイル                                                                       |
 
 正規表現を表すパラメータの文字列は、JavaScript の`new RegExp(pattern)`コンストラクタの`pattern`として入力されます。
+
+### テストケース・模範解答のローカル検証（judge.ts）
+
+`judge.ts` を使うと、テストケースと模範解答が正しいかをローカル環境で検証できます。
+Exercode にアップロードする前に問題の不備を発見できるため、活用を推奨します。
+
+#### 前提条件
+
+以下のツールがインストールされている必要があります。
+
+- [bun](https://bun.sh/)（JavaScript/TypeScript ランタイム）
+- 問題の対象言語の処理系（例：Java の問題なら `javac` / `java`）
+
+[asdf](https://asdf-vm.com/) を使っている場合は、リポジトリのルートに `.tool-versions` を作成してバージョンを指定してください。
+
+```
+bun 1.3.11
+java zulu-23.32.11
+```
+
+#### セットアップ
+
+1. リポジトリのルートに `package.json` を作成します：
+
+```json
+{
+  "name": "your-course-repo",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@exercode/problem-utils": "^1.8.1",
+    "puppeteer": "^24.0.0"
+  }
+}
+```
+
+> `puppeteer` はブラウザを使った判定（HTML/CSS、JavaScript のブラウザ依存問題）で必要です。
+> 標準入出力のみの判定であれば `@exercode/problem-utils` だけで十分です。
+
+2. 依存パッケージをインストールします：
+
+```bash
+bun install
+```
+
+#### judge.ts の種類
+
+問題の種類に応じて、2 種類の `judge.ts` を使い分けます。
+
+---
+
+##### 1. 標準入出力で判定する問題（Java, Python など）
+
+`test_cases/` ディレクトリの `.in`（標準入力）と `.out`（期待出力）のペアを使って、プログラムの出力を自動比較します。
+
+**judge.ts:**
+
+```ts
+import { stdioJudgePreset } from '@exercode/problem-utils/presets/stdio';
+
+await stdioJudgePreset(import.meta.dirname);
+```
+
+**ディレクトリ構成の例（`problems/addition/`）：**
+
+```
+addition/
+├── example_course_imported_a_plus_b.problem.md
+├── judge.ts
+├── model_answers/
+│   └── java/
+│       └── Main.java
+└── test_cases/
+    ├── 01_small_1.in
+    ├── 01_small_1.out
+    ├── 01_small_2.in
+    └── 01_small_2.out
+```
+
+**実行方法：**
+
+```bash
+cd problems/addition
+bun run judge.ts model_answers/java
+```
+
+---
+
+##### 2. ブラウザを使って判定する問題
+
+HTML/CSS の構造チェックや、JavaScript のブラウザ API（DOM 操作、イベント、localStorage 等）を使う問題では、Puppeteer でブラウザを起動して判定します。
+
+###### HTML/CSS 問題
+
+Puppeteer でページを開き、DOM 構造やスタイルを検証するテストケースを TypeScript で記述します。
+
+**judge.ts の例（`problems/html_css_example/`）：**
+
+```ts
+import { DecisionCode, parseArgs, printTestCaseResult, startHttpServer } from '@exercode/problem-utils';
+import type { TestCaseResult } from '@exercode/problem-utils';
+import assert from 'node:assert';
+import puppeteer from 'puppeteer';
+import type { Page } from 'puppeteer';
+
+const TEST_CASES: readonly [string, (page: Page) => Promise<Omit<TestCaseResult, 'testCaseId'>>][] = [
+  [
+    '01_h1',
+    async (page) => {
+      try {
+        const h1Handle = await page.locator('h1').waitHandle();
+        const h1Text = await h1Handle.evaluate((e) => e.textContent.trim());
+        assert.strictEqual(h1Text, '自己紹介');
+      } catch (error) {
+        return {
+          decisionCode: DecisionCode.WRONG_ANSWER,
+          stderr: error instanceof Error ? error.message : String(error),
+          feedbackMarkdown: '`h1`タグによる見出し`自己紹介`が見つかりません。',
+        };
+      }
+      return { decisionCode: DecisionCode.ACCEPTED };
+    },
+  ],
+  // ... 他のテストケース
+];
+
+const args = parseArgs(process.argv);
+await using server = startHttpServer(args.cwd);
+
+const browser = await puppeteer.launch({
+  args: process.env.CI || process.env.WB_DOCKER === '1' ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
+});
+const page = await browser.newPage();
+page.setDefaultTimeout(1000);
+
+await page.goto(server.url, { waitUntil: 'domcontentloaded' });
+
+for (const [testCaseId, test] of TEST_CASES) {
+  const result = await test(page);
+  printTestCaseResult({ testCaseId, ...result });
+  if (result.decisionCode !== DecisionCode.ACCEPTED) break;
+}
+
+await browser.close();
+```
+
+**ディレクトリ構成の例（`problems/html_css_example/`）：**
+
+```
+html_css_example/
+├── example_course_imported_html_css.problem.md
+├── judge.ts          ← Puppeteer でDOM構造を検証
+└── model_answers/
+    └── html/
+        └── index.html
+```
+
+テストケースは `judge.ts` 内の `TEST_CASES` 配列に直接記述します（`.in` / `.out` ファイルは不要）。
+検証パターンの例：
+
+- タグの存在とテキスト内容: `page.locator('h1').waitHandle()` + `evaluate(e => e.textContent)`
+- 属性の検証: `page.$$eval('img', es => es.map(e => e.getAttribute('src')))`
+- CSS スタイルの検証: `page.evaluate(() => getComputedStyle(el).color)`
+
+**実行方法：**
+
+```bash
+cd problems/html_css_example
+bun run judge.ts model_answers/html
+```
+
+###### JavaScript ブラウザ依存問題
+
+`test_cases/` の `.in` ファイルにブラウザ環境のセットアップコード（DOM 構築、`window.test` 定義等）を記述し、`.out` ファイルに `console.log` の期待出力を記述します。
+judge.ts は Puppeteer でブラウザを起動し、セットアップ → ユーザーコード実行 → 出力比較を行います。
+
+**ディレクトリ構成の例（`problems/javascript_browser_example/`）：**
+
+```
+javascript_browser_example/
+├── example_course_imported_js_browser.problem.md
+├── judge.ts          ← Puppeteer でブラウザ上でJSを実行し出力を比較
+├── model_answers/
+│   └── javascript/
+│       └── main.mjs
+└── test_cases/
+    ├── example_1.in   ← ブラウザ環境のセットアップコード
+    ├── example_1.out  ← console.log の期待出力
+    ├── test_1.in
+    └── test_1.out
+```
+
+`.in` ファイルの例：
+
+```javascript
+document.body.innerHTML = '<p id="message">初期テキスト</p><button id="change-btn">変更</button>';
+window.test = function() {
+  document.getElementById('change-btn').click();
+  if (document.getElementById('message').textContent === 'こんにちは！') {
+    console.log('OK');
+  } else {
+    console.log('NG');
+  }
+};
+```
+
+`.out` ファイルの例：
+
+```
+OK
+```
+
+**実行方法：**
+
+```bash
+cd problems/javascript_browser_example
+bun run judge.ts model_answers/javascript
+```
+
+---
+
+#### 実行結果の見方
+
+各テストケースごとに結果が出力されます。
+
+```
+TEST_CASE_RESULT {"testCaseId":"01_small_1","decisionCode":2000,"exitStatus":0,"stdin":"1 2","stdout":"3\n","timeSeconds":0.31,"memoryBytes":44695552}
+```
+
+主な `decisionCode` の意味：
+
+| コード | 意味                       |
+| ------ | -------------------------- |
+| 2000   | ACCEPTED（正解）           |
+| 1000   | WRONG_ANSWER（不正解）     |
+| 1001   | RUNTIME_ERROR              |
+| 1002   | TIME_LIMIT_EXCEEDED        |
+| 1100   | BUILD_ERROR                |
+
+すべてのテストケースで `decisionCode` が `2000` であれば、テストケースと模範解答に問題がないことが確認できます。
