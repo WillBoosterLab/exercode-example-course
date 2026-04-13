@@ -155,7 +155,41 @@ $A+B$の計算結果を出力してください。
 
 ※2 標準入力がない場合でも、空の `[テストケース名].in` ファイルが必要です。
 
-#### テストケースファイルの配置例
+#### コーディング問題のディレクトリ構成
+
+コーディング問題のディレクトリ構成には、以下の 2 種類があります。
+
+##### `judge.ts` を含む構成（推奨）
+
+問題ディレクトリに `judge.ts` を配置する構成です。ローカル環境でテストケースや模範解答の検証が可能になるため、こちらの構成を推奨します。`judge.ts` の詳細は後述の「テストケース・模範解答のローカル検証（judge.ts）」を参照してください。
+
+```
+addition/
+├── example_course_imported_a_plus_b.problem.md
+├── judge.ts
+├── model_answers/
+│   └── java/
+│       └── Main.java
+└── test_cases/
+    ├── sample1.in
+    ├── sample1.out
+    ├── sample2.in
+    ├── sample2.out
+    ├── edge1.in
+    ├── edge1.out
+    ├── edge2.in
+    ├── edge2.out
+    ├── random1.in
+    ├── random1.out
+    ├── random2.in
+    └── random2.out
+```
+
+##### `judge.ts` を含まない構成
+
+問題ディレクトリに `judge.ts` を配置しない構成です。この場合、Exercode のサーバー側で自動的に標準入出力の比較判定が行われます。ローカルでの検証はできません。
+
+> **注意**: この構成は 2026 年夏に廃止予定です。新規に問題を作成する場合は `judge.ts` を含む構成を使用してください。
 
 ```
 addition/
