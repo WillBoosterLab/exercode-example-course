@@ -1,6 +1,5 @@
 ---
 name: 図形の描画（GUI問題）
-isGui: true
 isManualScoringRequired: true
 ---
 
@@ -13,5 +12,6 @@ isManualScoringRequired: true
 手動採点する問題において、自動採点を無効化したい場合は、 `test_cases` ディレクトリを削除してください。
 `test_cases` ディレクトリがあると、手動採点の問題でも、自動採点の結果が表示されます。
 
-GUIプログラム向けの採点モードを有効にするためには、問題のFrontmatterに `isGui: true` を記載するか、
-もしくは、模範解答プログラムに `JFrame` または `javax.swing` というキーワードを含めるようにしてください。
+GUIプログラムを採点するには、この問題のように `judge.ts` を用意してください。
+この問題の `judge.ts` は、提出されたプログラムをコンパイル・実行し、表示されたウィンドウの
+スクリーンショットを成果物として収集した上で、手動採点に回します。
