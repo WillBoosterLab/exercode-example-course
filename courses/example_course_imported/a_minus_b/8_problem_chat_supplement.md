@@ -10,7 +10,7 @@ diffHintWaitingSeconds: 0
 下の問題は、問題Markdownに `<!-- chat -->` 区切りを入れた場合の動作確認用です。
 
 - [AI向け補足指示の確認問題](problems/example_course_imported_chat_supplement)
-  - `problems/chat_supplement_example/example_course_imported_chat_supplement.problem.md` を参照のこと。
+  - `problems/example_course_imported_chat_supplement/problem.md` を参照のこと。
 
 ## 動作確認の観点
 
