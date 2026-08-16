@@ -10,13 +10,13 @@ diffHintWaitingSeconds: 0
 トピック **A + B（コーディング問題のみ）** の本文です。
 
 - [A + B（CUI問題）](problems/example_course_imported_a_plus_b)
-  - `problems/addition/example_course_imported_a_plus_b.problem.md` を参照のこと。
+  - `problems/example_course_imported_a_plus_b/problem.md` を参照のこと。
 - [図形の描画（GUI問題）](problems/example_course_imported_java_gui)
-  - `courses/example_course_imported/a_plus_b/java_gui/example_course_imported_java_gui.problem.md` を参照のこと。
+  - `courses/example_course_imported/a_plus_b/example_course_imported_java_gui/problem.md` を参照のこと。
 - [レポート課題](problems/example_course_imported_report)
-  - `courses/example_course_imported/a_plus_b/report/example_course_imported_report.problem.md` を参照のこと。
+  - `courses/example_course_imported/a_plus_b/example_course_imported_report/problem.md` を参照のこと。
 
-1問目と2-3問目の問題のディレクトリが異なります。問題はファイル名（`*.problem.md`）で検索するため、任意のフォルダに置けます。
+1問目と2-3問目の問題のディレクトリが異なります。問題は`problem.md`を含むディレクトリ（ディレクトリ名が問題ID）で検索するため、任意のフォルダに置けます。
 ご自身で整理しやすいディレクトリを選んでください。
 
 内部向けのメモ：上記のリンクはExercodeのテスト（動作確認）で参照しているので、テキストやリンク先を変更しないでください。
