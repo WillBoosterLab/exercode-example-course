@@ -1,0 +1,9 @@
+{
+  "name": "exercode-example-course",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@exercode/problem-utils": "1.18.2",
+    "puppeteer": "25.5.0"
+  }
+}

@@ -1,6 +1,5 @@
 .idea/
 node_modules/
-bun.lock
-package.json
-.tool-versions
+.DS_Store
+.tmp/
 *.class
