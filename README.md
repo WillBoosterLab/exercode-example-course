@@ -160,11 +160,11 @@ divisions:
   - id: morning_session
     name: 午前の部
     openedAt: '2000-01-01T09:00:00+09:00'
-    closedAt: '2000-01-01T10:00:00+09:00'
+    closedAt: '2099-01-01T10:00:00+09:00'
   - id: afternoon_session
     name: 午後の部
     openedAt: '2000-01-01T13:00:00+09:00'
-    closedAt: '2000-01-01T14:00:00+09:00'
+    closedAt: '2099-01-01T14:00:00+09:00'
 problems:
   - id: example_course_imported_a_plus_b
     score: 100
