@@ -8,3 +8,6 @@ lectures:
   - id: a_minus_b
     name: 引き算を学ぼう
     description: ここに各回の説明を記載します。
+  - id: example_contest
+    name: コンテスト例
+    description: コンテスト教材の構成例です。

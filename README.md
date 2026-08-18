@@ -8,8 +8,9 @@
 | --------------------- | --------------------------------------------------------------------- |
 | コース（科目）ID      | `course.yaml` を置いたディレクトリの名前                              |
 | レクチャー（授業）ID  | `course.yaml` の `lectures` の `id`（同名のディレクトリ名）           |
-| マテリアル（教材）ID  | マテリアルファイルの名前（`.md` を除いた部分）                        |
-| 問題 ID               | `[問題ID].problem.md` のファイル名                                    |
+| マテリアル（教材）ID  | マテリアルファイルの名前（`.md` または `.contest.yaml` を除いた部分） |
+| 問題 ID               | `problem.md` を置いたディレクトリの名前                               |
+| マテリアル内問題 ID   | `yaml question` の `id`                                               |
 
 **これらの ID を変更してインポートすると、変更前の ID の教材・問題は「削除」され、変更後の ID の教材・問題が「新規追加」として扱われます。**
 削除される教材・問題に学生の提出記録が紐づいている場合、**提出記録も完全に削除され、ID を元に戻して再インポートしても復元できません**。
@@ -59,8 +60,9 @@ lectures:
 | `name`                       | 文字列 | 名称                                           |
 | `description`                | 文字列 | 説明                                           |
 | `author`                     | 文字列 | 作成者名                                       |
-| `lessons`                    | 配列   | レッスンの配列                                 |
+| `lectures`                   | 配列   | レクチャーの配列                               |
 | `isMotivationFeatureEnabled` | 真偽   | モチベーション機能を**有効**にする             |
+| `isPublic`                   | 真偽   | コースを公開する                               |
 | 他                           |        | コース・マテリアル共通の設定パラメータ（後述） |
 
 ### コース・マテリアル共通の設定パラメータ
@@ -87,6 +89,7 @@ lectures:
 | `isAutoTranslationDisabled`       | 真偽   | 自動翻訳を**無効**にする                                                                                                              |
 | `isModelAnswerShownAfterDeadline` | 真偽   | 締切後にコーディング問題の模範解答を表示する。                                                                                        |
 | `isVotable`                       | 真偽   | 投票機能（提出後に他の学生のソースコードを閲覧する機能）が有効か否か                                                                  |
+| `isMaterialChatDisabled`          | 真偽   | 教材チャットを**無効**にする                                                                                                          |
 
 [ISO 日付文字列](https://ja.wikipedia.org/wiki/ISO_8601)を記載する際は、 `2025-04-28T13:10:00+09:00` のようにタイムゾーン情報（`+09:00`）を末尾に追記することを強く推奨します。
 
@@ -101,24 +104,21 @@ ID は半角小文字アルファベット、数字、アンダースコア、�
 
 | パラメータ名  | 型     | 説明                                                                       |
 | ------------- | ------ | -------------------------------------------------------------------------- |
-| `id`          | 文字列 | ID、コース内で一意かつ別途作成したディレクトリ名（後述）と一致していること |
+| `id`          | 文字列 | ID、コース内で一意かつ別途作成したディレクトリ名（前述）と一致していること |
 | `name`        | 文字列 | 名称                                                                       |
 | `description` | 文字列 | 説明                                                                       |
 
 ### マテリアル（講義資料）
 
-レクチャーのディレクトリ内に`[マテリアルIDサフィックス].md`という名のファイルを作成してください。
-マテリアル ID サフィックスは半角小文字アルファベット、数字、アンダースコア、ハイフンからなる、レクチャー内で一意の文字列です。
+レクチャーのディレクトリ内に`[マテリアルID].md`という名のファイルを作成してください。
+マテリアル ID は半角小文字アルファベット、数字、アンダースコア、ハイフンからなる、レクチャー内で一意の文字列です。
 [Front Matter](https://zenn.dev/adust/articles/cea61d98ea09d3)にそのマテリアルのパラメータを記述してください。
-
-（なお、`[コースID].[レクチャーID].[マテリアルIDサフィックス]` という文字列がマテリアル ID です。
-コース ID が一意で、かつ、レクチャーフォルダ内に同名のファイルを作れないため、マテリアル ID は自然と一意になります。）
 
 マテリアルはファイル名の辞書順で表示されます。
 `10_introduction.md`、`20_exercise.md` のように間隔を空けた番号を付けておくと、後から新しい教材を間に挿入しやすくなります。
 運用開始後にファイル名を変更すると、そのマテリアルに紐づく提出記録が削除されるため注意してください（前述の「ID の変更に関する注意」を参照）。
 
-`[マテリアルIDサフィックス].md`ファイルの内容の例：
+`[マテリアルID].md`ファイルの内容の例：
 
 ```md
 ---
@@ -130,7 +130,7 @@ name: マテリアル1
 
 本文です。
 
-- [問題](problems/__example_imported_a_plus_b)
+- [問題](problems/example_course_imported_a_plus_b)
 ```
 
 #### マテリアルのパラメータ
@@ -139,26 +139,85 @@ name: マテリアル1
 | ------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `name`             | 文字列 | 名称                                                                                                                                             |
 | `isExamination`    | 真偽   | 試験モードを**有効**にする。有効にすると、選択肢問題の再提出が**有効**になり、ヒント機能、コード実行機能、コピー＆ペーストなどが**無効**になる。 |
+| `isMockExamination` | 真偽   | 模擬試験モードを**有効**にする。試験モードの機能に加えて、問題一覧と単一問題表示の画面が表示される。                                 |
 | `isRealtimeSurvey` | 真偽   | リアルタイムなアンケート集計機能を**有効**にする。                                                                                               |
 | 他                 |        | 上記のコース・マテリアル共通の設定パラメータ                                                                                                     |
 
 #### 選択肢・穴埋め・記述式問題
 
 マテリアルファイルの中で選択肢・穴埋め・記述式問題を作成することができます。
-詳細は [マテリアル内に挿入可能な問題の作問ガイドライン](/howToWriteQuestions.md) をご覧ください。
+詳細は [マテリアル内に挿入可能な問題の作問ガイドライン](howToWriteQuestions.md) をご覧ください。
+
+### コンテスト
+
+コンテストはマテリアルの一種です。レクチャーのディレクトリ内に`[コンテストID].contest.yaml`というファイルを作成します。
+コンテストから参照できるのは、同じコース内の問題だけです。
+
+```yaml
+name: 足し算・引き算コンテスト
+description: 制限時間内に複数の問題へ挑戦するコンテストの例です。
+divisions:
+  - id: morning_session
+    name: 午前の部
+    openedAt: '2000-01-01T09:00:00+09:00'
+    closedAt: '2000-01-01T10:00:00+09:00'
+  - id: afternoon_session
+    name: 午後の部
+    openedAt: '2000-01-01T13:00:00+09:00'
+    closedAt: '2000-01-01T14:00:00+09:00'
+problems:
+  - id: example_course_imported_a_plus_b
+    score: 100
+  - id: example_course_imported_a_minus_b
+    score: 100
+```
+
+#### コンテストのパラメータ
+
+| パラメータ名              | 型     | 説明                                                               |
+| ------------------------- | ------ | ------------------------------------------------------------------ |
+| `name`                    | 文字列 | 名称                                                               |
+| `description`             | 文字列 | コンテストの説明（Markdown）                                       |
+| `showsProblemsAfterClose` | 真偽   | 全開催区分の終了後に非参加者へ問題を表示するか。初期値は`true`     |
+| `adminEmails`             | 配列   | コンテスト教材の管理者にする登録済みアカウントのメールアドレス     |
+| `divisions`               | 配列   | 開催区分。1件以上必要                                               |
+| `problems`                | 配列   | 出題する問題。1件以上必要                                           |
+| 他                        |        | 上記のコース・マテリアル共通の設定パラメータ                       |
+
+`divisions`の各要素には以下のパラメータを記載します。
+
+| パラメータ名 | 型     | 説明                                          |
+| ------------ | ------ | --------------------------------------------- |
+| `id`         | 文字列 | コンテスト内で一意のID                        |
+| `name`       | 文字列 | 名称                                          |
+| `openedAt`   | 文字列 | 開催開始日時（タイムゾーン付きISO日付文字列） |
+| `closedAt`   | 文字列 | 開催終了日時（タイムゾーン付きISO日付文字列） |
+| `password`   | 文字列 | 参加用パスワード                              |
+
+`problems`の各要素には問題 ID と 0 以上の整数の配点を指定します。
+
+| パラメータ名 | 型     | 説明                                   |
+| ------------ | ------ | -------------------------------------- |
+| `id`         | 文字列 | コンテスト内で重複しない問題 ID        |
+| `score`      | 整数   | 配点                                   |
+
+問題ごとに、`areTestCasesHidden`、ヒントの無効化設定・待機時間、`isMaterialChatDisabled`を上書きできます。
+division ID や問題 ID は、参加登録や提出が始まった後に変更・削除しないでください。
+
+実例: [`example_contest.contest.yaml`](courses/example_course_imported/example_contest/example_contest.contest.yaml)
 
 ### コーディング問題
 
-リポジトリ内に`[問題ID].problem.md`という名のファイルを作成してください。
-問題 ID は半角小文字アルファベット、数字、アンダースコア、ハイフンからなる、**Exercode 全体で一意**の文字列です。
-リポジトリ内であれば任意のディレクトリに配置できます。
+コースのディレクトリ内に、`problem.md`を含む問題ディレクトリを作成してください。
+問題ディレクトリの名前が問題 ID になります。問題 ID は半角小文字アルファベット、数字、アンダースコア、ハイフンからなる、**コース内で一意**の文字列です。
+問題ディレクトリは同じコース内の任意の場所に配置できます。`problems/[問題ID]/problem.md`という構成を推奨します。
 
-運用開始後に問題 ID（ファイル名）を変更すると、その問題に紐づく提出記録が削除されるため注意してください（前述の「ID の変更に関する注意」を参照）。
+運用開始後に問題 ID（ディレクトリ名）を変更すると、その問題に紐づく提出記録が削除されるため注意してください（前述の「ID の変更に関する注意」を参照）。
 
 コーディング問題の Markdown ファイルには YAML 形式のフロントマターを記述する必要があります。
 フロントマターでは後述するパラメータを設定できます。
 
-`[問題ID].problem.md`ファイルの内容の例：
+`problem.md`ファイルの内容の例：
 
 ```md
 ---
@@ -174,11 +233,12 @@ $A+B$の計算結果を出力してください。
 
 #### テストケースの作成
 
-`isManualScoringRequired` が `true` で設定されていない場合、自動採点用のテストケースを作成する必要があります。
+標準入出力で判定する問題では、`isManualScoringRequired` が `true` に設定されていない場合、自動採点用のテストケースを作成する必要があります。
+独自の判定処理を実装する問題では、`judge.ts`の実装に応じてテストケースを用意してください。
 
 #### テストケースファイルの配置
 
-1. `[問題ID].problem.md` と同じディレクトリに `test_cases` フォルダを作成します。
+1. `problem.md` と同じディレクトリに `test_cases` フォルダを作成します。
 
 2. `test_cases` フォルダ内に、1つ以上の標準入力・標準出力ファイルのペアを作成します：
    - 標準入力ファイル：`[テストケース名].in`
@@ -190,16 +250,15 @@ $A+B$の計算結果を出力してください。
 
 #### コーディング問題のディレクトリ構成
 
-コーディング問題のディレクトリ構成には、以下の 2 種類があります。
+標準入出力で判定する問題と、独自の判定処理を実装する問題で構成が異なります。
 
-##### `judge.ts` を含む構成（推奨）
+##### 標準入出力で判定する問題
 
-問題ディレクトリに `judge.ts` を配置する構成です。ローカル環境でテストケースや模範解答の検証が可能になるため、こちらの構成を推奨します。`judge.ts` の詳細は後述の「テストケース・模範解答のローカル検証（judge.ts）」を参照してください。
+通常の標準入出力問題には`judge.ts`と`debug.ts`を配置しません。標準のJudgeとDebugが自動的に使用されます。
 
 ```
 addition/
-├── example_course_imported_a_plus_b.problem.md
-├── judge.ts
+├── problem.md
 ├── model_answers/
 │   └── java/
 │       └── Main.java
@@ -218,28 +277,25 @@ addition/
     └── random2.out
 ```
 
-##### `judge.ts` を含まない構成
+##### 独自の判定処理を実装する問題
 
-問題ディレクトリに `judge.ts` を配置しない構成です。この場合、Exercode のサーバー側で自動的に標準入出力の比較判定が行われます。ローカルでの検証はできません。
+HTML/CSS、ブラウザAPI、GUIなど、標準入出力の比較では判定できない問題には`judge.ts`を配置します。
+デバッグ機能も提供する場合は、その問題に対応した`debug.ts`も配置します。
 
-> **注意**: この構成は 2026 年夏に廃止予定です。新規に問題を作成する場合は `judge.ts` を含む構成を使用してください。
-
+```text
+custom_problem/
+├── problem.md
+├── judge.ts
+├── debug.ts
+└── model_answers/
 ```
-addition/
-├── example_course_imported_a_plus_b.problem.md
-└── test_cases/
-    ├── sample1.in
-    ├── sample1.out
-    ├── sample2.in
-    ├── sample2.out
-    ├── edge1.in
-    ├── edge1.out
-    ├── edge2.in
-    ├── edge2.out
-    ├── random1.in
-    ├── random1.out
-    ├── random2.in
-    └── random2.out
+
+独自Judgeを使用するCUI問題で、デバッグ時は標準入出力をそのまま利用できる場合は、次の`debug.ts`を使用できます。
+
+```ts
+import { stdioDebugPreset } from '@exercode/problem-utils/presets/stdio';
+
+await stdioDebugPreset(import.meta.dirname);
 ```
 
 #### コーディング問題のパラメータ
@@ -247,7 +303,6 @@ addition/
 | パラメータ名                             | 型                 | 必須 | 初期値            | 説明                                                                                       |
 | ---------------------------------------- | ------------------ | ---- | ----------------- | ------------------------------------------------------------------------------------------ |
 | `name`                                   | 文字列             | ✓    |                   | 名称                                                                                       |
-| `generalJudgeEnvironmentConfigOverrides` | オブジェクトの配列 |      |                   | ジェネラルジャッジの設定の上書き                                                           |
 | `timeLimitMs`                            | 整数               |      | 2000              | 実行時間制限（ミリ秒、0 以上）                                                             |
 | `memoryLimitByte`                        | 整数               |      | 256 × 1024 × 1024 | メモリ制限（バイト、0 以上）                                                               |
 | `requiredRegExpsInCode`                  | 文字列の配列       |      | `[]`              | ソースコードで必須の正規表現                                                               |
@@ -255,7 +310,6 @@ addition/
 | `forbiddenTextsInCode`                   | 文字列の配列       |      | `[]`              | ソースコードで禁止の文字列                                                                 |
 | `canCreateFiles`                         | 真偽               |      |                   | ファイル作成を許すか否か                                                                   |
 | `isAttachedFileRequired`                 | 真偽               |      |                   | 添付ファイルが必須か否か                                                                   |
-| `isGui`                                  | 真偽               |      |                   | GUI プログラム専用の自動採点をするか否か。自動判定されるが、このオプションで指定もできる。 |
 | `isManualScoringRequired`                | 真偽               |      |                   | 手動採点が必要か否か。手動採点が必要な問題ではヒント機能は利用できない。                   |
 | `isVotable`                              | 真偽               |      |                   | 投票機能（提出後に他の学生のソースコードを閲覧する機能）が有効か否か                       |
 | `isEditorDisabled`                       | 真偽               |      |                   | エディタを**無効**にする。エディタが無効な場合、ソースコードをアップロードする必要がある。 |
@@ -265,98 +319,39 @@ addition/
 
 正規表現を表すパラメータの文字列は、JavaScript の`new RegExp(pattern)`コンストラクタの`pattern`として入力されます。
 
-### テストケース・模範解答のローカル検証（judge.ts）
+### 独自Judge・模範解答のローカル検証（judge.ts）
 
-`judge.ts` を使うと、テストケースと模範解答が正しいかをローカル環境で検証できます。
+独自の判定処理を実装した問題では、`judge.ts` を使ってテストケースと模範解答が正しいかをローカル環境で検証できます。
 Exercode にアップロードする前に問題の不備を発見できるため、活用を推奨します。
 
 #### 前提条件
 
+このリポジトリでは、ランタイムのバージョンを`.tool-versions`で管理しています。
 以下のツールがインストールされている必要があります。
 
+- [mise](https://mise.jdx.dev/)（ランタイムのバージョン管理）
 - [bun](https://bun.sh/)（JavaScript/TypeScript ランタイム）
 - 問題の対象言語の処理系（例：Java の問題なら `javac` / `java`）
 
-[asdf](https://asdf-vm.com/) を使っている場合は、リポジトリのルートに `.tool-versions` を作成してバージョンを指定してください。
-
-```
-bun 1.3.11
-java zulu-23.32.11
-```
-
 #### セットアップ
 
-1. リポジトリのルートに `package.json` を作成します：
+1. `.tool-versions`に記載されたランタイムをインストールします：
 
-```json
-{
-  "name": "your-course-repo",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@exercode/problem-utils": "^1.8.1",
-    "puppeteer": "^24.0.0"
-  }
-}
+```bash
+mise install
 ```
 
-> `puppeteer` はブラウザを使った判定（HTML/CSS、JavaScript のブラウザ依存問題）で必要です。
-> 標準入出力のみの判定であれば `@exercode/problem-utils` だけで十分です。
-
-2. 依存パッケージをインストールします：
+2. `package.json`に記載された依存パッケージをインストールします：
 
 ```bash
 bun install
 ```
 
-#### judge.ts の種類
-
-問題の種類に応じて、2 種類の `judge.ts` を使い分けます。
-
----
-
-##### 1. 標準入出力で判定する問題（Java, Python など）
-
-`test_cases/` ディレクトリの `.in`（標準入力）と `.out`（期待出力）のペアを使って、プログラムの出力を自動比較します。
-
-**judge.ts:**
-
-```ts
-import { stdioJudgePreset } from '@exercode/problem-utils/presets/stdio';
-
-await stdioJudgePreset(import.meta.dirname);
-```
-
-**ディレクトリ構成の例（`problems/addition/`）：**
-
-```
-addition/
-├── example_course_imported_a_plus_b.problem.md
-├── judge.ts
-├── model_answers/
-│   └── java/
-│       └── Main.java
-└── test_cases/
-    ├── 01_small_1.in
-    ├── 01_small_1.out
-    ├── 01_small_2.in
-    └── 01_small_2.out
-```
-
-**実行方法：**
-
-```bash
-cd problems/addition
-bun run judge.ts model_answers/java
-```
-
----
-
-##### 2. ブラウザを使って判定する問題
+#### ブラウザを使って判定する問題
 
 HTML/CSS の構造チェックや、JavaScript のブラウザ API（DOM 操作、イベント、localStorage 等）を使う問題では、Puppeteer でブラウザを起動して判定します。
 
-###### HTML/CSS 問題
+##### HTML/CSS 問題
 
 Puppeteer でページを開き、DOM 構造やスタイルを検証するテストケースを TypeScript で記述します。
 
@@ -414,7 +409,7 @@ await browser.close();
 
 ```
 html_css_example/
-├── example_course_imported_html_css.problem.md
+├── problem.md
 ├── judge.ts          ← Puppeteer でDOM構造を検証
 └── model_answers/
     └── html/
@@ -435,7 +430,7 @@ cd problems/html_css_example
 bun run judge.ts model_answers/html
 ```
 
-###### JavaScript ブラウザ依存問題
+##### JavaScript ブラウザ依存問題
 
 `test_cases/` の `.in` ファイルにブラウザ環境のセットアップコード（DOM 構築、`window.test` 定義等）を記述し、`.out` ファイルに `console.log` の期待出力を記述します。
 judge.ts は Puppeteer でブラウザを起動し、セットアップ → ユーザーコード実行 → 出力比較を行います。
@@ -444,7 +439,7 @@ judge.ts は Puppeteer でブラウザを起動し、セットアップ → ユ�
 
 ```
 javascript_browser_example/
-├── example_course_imported_js_browser.problem.md
+├── problem.md
 ├── judge.ts          ← Puppeteer でブラウザ上でJSを実行し出力を比較
 ├── model_answers/
 │   └── javascript/
@@ -487,7 +482,7 @@ bun run judge.ts model_answers/javascript
 
 #### 実行結果の見方
 
-各テストケースごとに結果が出力されます。
+各テストケースの結果が出力されます。
 
 ```
 TEST_CASE_RESULT {"testCaseId":"01_small_1","decisionCode":2000,"exitStatus":0,"stdin":"1 2","stdout":"3\n","timeSeconds":0.31,"memoryBytes":44695552}
@@ -503,4 +498,4 @@ TEST_CASE_RESULT {"testCaseId":"01_small_1","decisionCode":2000,"exitStatus":0,"
 | 1002   | TIME_LIMIT_EXCEEDED        |
 | 1100   | BUILD_ERROR                |
 
-すべてのテストケースで `decisionCode` が `2000` であれば、テストケースと模範解答に問題がないことが確認できます。
+すべてのテストケースで `decisionCode` が `2000` であれば、模範解答がすべてのテストケースを通過することを確認できます。
