@@ -11,3 +11,6 @@ lectures:
   - id: example_contest
     name: コンテスト例
     description: コンテスト教材の構成例です。
+  - id: kotlin_android
+    name: Kotlin・Androidの採点例
+    description: KotlinプログラムとAndroidユニットテストの採点例です。
